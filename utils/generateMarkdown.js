@@ -1,12 +1,10 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Function that returns a license badge based on user input
 function renderLicenseBadge(license) {
   if (!license || license === 'None') return '';
-  return `![License](https://img.shields.io/badge/License-${license.replace(' ', '_')}-teal.svg)`;
+  return `![License](https://img.shields.io/badge/License-${license.replace(' ', '_')}-blue.svg)`;
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// Function that returns the license link based on user input
 function renderLicenseLink(license) {
   if (!license || license === 'None') return '';
   let licenseLink = '';
@@ -27,8 +25,7 @@ function renderLicenseLink(license) {
   return licenseLink;
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Function that renders the license section of README
 function renderLicenseSection(license) {
   if (!license || license === 'None') return '';
   return `
@@ -37,8 +34,40 @@ function renderLicenseSection(license) {
   `;
 }
 
-// TODO: Create a function to generate markdown for README
+// Function that generates the content for README file
 function generateMarkdown(data) {
+  // dynamically build table of contents based on user input
+  let toc = `
+  ## Table of Contents
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)`;
+
+  // Conditionally include other sections based on user input
+  if (data.license && data.license !== 'None') {
+    toc += `
+  - [License](#license)`;
+  }
+  if (data.contributing) {
+    toc += `
+  - [Contributing](#contributing)`;
+  }
+  if (data.tests) {
+    toc += `
+  - [Tests](#tests)`;
+  }
+  toc += `
+  - [Questions](#questions)`;
+
+  // Questions section with Email & GitHub link
+  const questionsSection = `
+  ## Questions
+  For any questions, please contact me via email at [${data.email}](mailto:${data.email}).
+    
+  Additionally, you can find more of my work on my GitHub profile: [${data.githubUsername}](https://github.com/${data.githubUsername})
+  `;
+
+  // Generates the rest of the README content
   const licenseBadge = renderLicenseBadge(data.license);
   const licenseSection = renderLicenseSection(data.license);
 
@@ -49,8 +78,7 @@ function generateMarkdown(data) {
   ## Description
   ${data.description}
 
-  ## Table of Contents (Optional)
-  ${data.tableOfContents}
+  ${toc}
 
   ## Installation
   ${data.installation}
@@ -66,11 +94,10 @@ function generateMarkdown(data) {
   ## Tests
   ${data.tests}
 
-  ## Questions
-  For any questions, please contact me at [${data.email}](mailto:${data.email}).
+  ${questionsSection}
 
 `;
 }
 
-// Export the generateMarkdown function to index.js
+// Exports the generateMarkdown function to index.js
 module.exports = generateMarkdown;

@@ -1,30 +1,40 @@
-# My project title
+# this is my project title
 
-  ![License](https://img.shields.io/badge/License-Apache_2.0-teal.svg)
+  ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
   ## Description
-  My project description
+  this is my description
 
-  ## Table of Contents (Optional)
-  My Table of Contents
+  
+  ## Table of Contents
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Tests](#tests)
+  - [Questions](#questions)
 
   ## Installation
-  This is how you install my project
+  install
 
   ## Usage
-  This is how you use this project
+  use
 
   
   ## License
-  This project is licensed under the [Apache 2.0](https://opensource.org/licenses/Apache-2.0) license.
+  This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
   
 
   ## Contributing
-  This is how others can contribute
+  
 
   ## Tests
-  This is how users can test this project
+  test
 
+  
   ## Questions
-  For any questions, please contact me at [mallory1313@msn.com](mailto:mallory1313@msn.com).
+  For any questions, please contact me via email at [mallory1313@msn.com](mailto:mallory1313@msn.com).
+    
+  Additionally, you can find more of my work on my GitHub profile: [Meowlory3579](https://github.com/Meowlory3579)
+  
 
