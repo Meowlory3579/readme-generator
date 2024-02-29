@@ -66,12 +66,12 @@ function generateMarkdown(data) {
   }
   if (data.functionality) {
     toc += `
-  - [Functionality](#functionality)`;
+  - [Functionality Demo](#functionality-demo)`;
     hasInput = true;
   }
   if (data.url) {
     toc += `
-  - [URL](#url)`;
+  - [Deployed URL](#deployed-url)`;
     hasInput = true;
   }
   if (data.credits) {
@@ -121,10 +121,10 @@ function generateMarkdown(data) {
     readmeContent += `## Tests\n${data.tests}\n\n`;
   }
   if (data.functionality) {
-    readmeContent += `## The following image/link demonstrates the web application's appearance and functionality\n${data.functionality}\n\n`;
+    readmeContent += `## Functionality Demo\n${data.functionality}\n\n`;
   }
   if (data.url) {
-    readmeContent += `## Link to Deployed Application\n${data.url}\n\n`;
+    readmeContent += `## Deployed URL\n${data.url}\n\n`;
   }
   if (data.credits) {
     readmeContent += `## Credits\n${data.credits}\n\n`;
