@@ -34,16 +34,18 @@ function renderLicenseSection(license) {
   `;
 }
 
-// Function that generates the content for README file
+// Beginning: Function that generates the content for README file
 function generateMarkdown(data) {
-  // dynamically build table of contents based on user input
+  // Beginning: Dynamically build table of contents based on user input
   let toc = `
   ## Table of Contents
   - [Description](#description)
-  - [Installation](#installation)
-  - [Usage](#usage)`;
+  - [Installation](#installation)`;
 
-  // Conditionally include other sections based on user input
+  if (data.usage) {
+    toc += `
+  - [Usage](#usage)`;
+  }
   if (data.license && data.license !== 'None') {
     toc += `
   - [License](#license)`;
@@ -58,6 +60,7 @@ function generateMarkdown(data) {
   }
   toc += `
   - [Questions](#questions)`;
+  // End: Dynamically build table of contents based on user input
 
   // Questions section with Email & GitHub link
   const questionsSection = `
@@ -98,6 +101,7 @@ function generateMarkdown(data) {
 
 `;
 }
+// End: Function that generates the content for README file
 
 // Exports the generateMarkdown function to index.js
 module.exports = generateMarkdown;

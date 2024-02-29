@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// Array of questions for user input
+// Beginning: Array of questions for user input
 const questions = [
   {
     type: 'input',
@@ -31,6 +31,12 @@ const questions = [
     type: 'input',
     name: 'installation',
     message: 'How do you install your project?',
+    validate: input => {
+      if (input.trim() === '') {
+        return 'Please enter installation instructions. If not applicable, enter N/A';
+      }
+      return true;
+    }
   },
   {
     type: 'input',
@@ -75,6 +81,7 @@ const questions = [
     }
   },
 ];
+// End: Array of questions for user input
 
 // Function to ingest file name and user input, then write it to README
 function writeToFile(fileName, data) {
