@@ -42,27 +42,48 @@ function generateMarkdown(data) {
   - [Description](#description)
   - [Installation](#installation)`;
 
+  let hasInput = false; // Used to track what sections to add to README
+
   if (data.usage) {
     toc += `
   - [Usage](#usage)`;
+    hasInput = true;
   }
   if (data.license && data.license !== 'None') {
     toc += `
   - [License](#license)`;
+    hasInput = true;
   }
   if (data.contributing) {
     toc += `
   - [Contributing](#contributing)`;
+    hasInput = true;
   }
   if (data.tests) {
     toc += `
   - [Tests](#tests)`;
+    hasInput = true;
+  }
+  if (data.functionality) {
+    toc += `
+  - [Functionality](#functionality)`;
+    hasInput = true;
+  }
+  if (data.url) {
+    toc += `
+  - [URL](#url)`;
+    hasInput = true;
+  }
+  if (data.credits) {
+    toc += `
+  - [Credits](#credits)`;
+    hasInput = true;
   }
   toc += `
   - [Questions](#questions)`;
   // End: Dynamically build table of contents based on user input
 
-  // Questions section with Email & GitHub link
+  // Renders questions section of README
   const questionsSection = `
   ## Questions
   For any questions, please contact me via email at [${data.email}](mailto:${data.email}).
@@ -70,36 +91,47 @@ function generateMarkdown(data) {
   Additionally, you can find more of my work on my GitHub profile: [${data.githubUsername}](https://github.com/${data.githubUsername})
   `;
 
-  // Generates the rest of the README content
+  // Renders Badge & License Section of README
   const licenseBadge = renderLicenseBadge(data.license);
   const licenseSection = renderLicenseSection(data.license);
 
-  return `# ${data.title}
+  // Start generating README content
+  let readmeContent = `# ${data.title}\n\n`;
 
-  ${licenseBadge}
+  if (licenseBadge) {
+    readmeContent += `${licenseBadge}\n\n`;
+  }
+  if (data.description) {
+    readmeContent += `## Description\n${data.description}\n\n`;
+  }
+  if (hasInput) {
+    readmeContent += `${toc}\n\n`;
+  }
+  if (data.installation) {
+    readmeContent += `## Installation\n${data.installation}\n\n`;
+  }
+  if (data.usage) {
+    readmeContent += `## Usage\n${data.usage}\n\n`;
+  }
+  readmeContent += `${licenseSection}\n`;
+  if (data.contributing) {
+    readmeContent += `## Contributing\n${data.contributing}\n\n`;
+  }
+  if (data.tests) {
+    readmeContent += `## Tests\n${data.tests}\n\n`;
+  }
+  if (data.functionality) {
+    readmeContent += `## The following image/link demonstrates the web application's appearance and functionality\n${data.functionality}\n\n`;
+  }
+  if (data.url) {
+    readmeContent += `## Link to Deployed Application\n${data.url}\n\n`;
+  }
+  if (data.credits) {
+    readmeContent += `## Credits\n${data.credits}\n\n`;
+  }
+  readmeContent += `${questionsSection}\n`;
 
-  ## Description
-  ${data.description}
-
-  ${toc}
-
-  ## Installation
-  ${data.installation}
-
-  ## Usage
-  ${data.usage}
-
-  ${licenseSection}
-
-  ## Contributing
-  ${data.contributing}
-
-  ## Tests
-  ${data.tests}
-
-  ${questionsSection}
-
-`;
+  return readmeContent;
 }
 // End: Function that generates the content for README file
 

@@ -19,7 +19,7 @@ const questions = [
   {
     type: 'input',
     name: 'description',
-    message: 'Provide a short description of your project:',
+    message: 'Provide a short description of your project.',
     validate: input => {
       if (input.trim() === '') {
         return 'Please enter a project description.';
@@ -33,7 +33,7 @@ const questions = [
     message: 'How do you install your project?',
     validate: input => {
       if (input.trim() === '') {
-        return 'Please enter installation instructions. If not applicable, enter N/A';
+        return 'Please enter installation instructions. If not applicable, enter N/A.';
       }
       return true;
     }
@@ -61,8 +61,23 @@ const questions = [
   },
   {
     type: 'input',
+    name: 'functionality',
+    message: "Enter a link to a photo or video that will demonstrate the application's functionality.",
+  },
+  {
+    type: 'input',
+    name: 'url',
+    message: "Enter the URL for the deployed application.",
+  },
+  {
+    type: 'input',
+    name: 'credits',
+    message: "Enter credits/acknowledgements.",
+  },
+  {
+    type: 'input',
     name: 'githubUsername',
-    message: 'Enter your GitHub username for the Questions section:',
+    message: 'Enter your GitHub username for the Questions section.',
   },
   {
     type: 'input',
